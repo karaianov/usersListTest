@@ -1,0 +1,126 @@
+@import './variables.scss';
+
+@import './fonts.scss';
+@import './typography.scss';
+
+@import './mixins/other';
+@import './mixins/position';
+
+:root {
+    font-family: 'Oswald';
+    background-color: $backgroundColor;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $backgroundColor;
+}
+
+.container {
+    max-width: 1096px;
+    @include size(100%, 100%);
+    margin: 0 auto;
+    padding-inline: 24px;
+}
+
+header {
+    @include flexbox(row, flex-start, center);
+    @include size(100%, 48px);
+    margin-bottom: 48px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+
+    .container {
+        @include flexbox(row, flex-start, center);
+    }
+
+    .logo {
+        @include fontSettings(400, 24px, normal);
+        text-decoration: none;
+    }
+}
+
+.filtersWrapper {
+    @include flexbox(row, flex-start, center);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.usersWrapper {
+    @include flexbox(row, flex-start, center);
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .userCard {
+        @include size(256px, auto);
+        position: relative;
+        padding: 16px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+        h2 {
+            @include fontSettings(500, 24px, normal);
+            @include textOverflow;
+            margin-bottom: 16px;
+        }
+
+        .id {
+            @include absolute(8px, 8px, unset, unset);
+            @include fontSettings(300, 12px, normal);
+        }
+
+        .info {
+            @include flexbox(column, flex-start, flex-start);
+            flex-wrap: wrap;
+            gap: 4px;
+
+            a {
+                @include flexbox(row, flex-start, center);
+                @include fontSettings(400, 16px, normal);
+                gap: 8px;
+                text-decoration: none;
+
+                .icon {
+                    @include size(16px);
+                    object-fit: contain;
+                }    
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            
+        }
+    }
+}
+
+button {
+    padding: 8px;
+    border: 1px solid $primaryColor;
+    border-radius: 4px;
+    transition: color .3s, background-color .3s, border-color .3s;
+
+    @media (hover: hover) {
+        transition: color .3s, background-color .3s, border-color .3s, transform .3s;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .icon {
+        @include size(16px);
+    }
+    
+    &.active {
+        background-color: $secondaryColor;
+        border-color: transparent;
+        color: #fff;
+        pointer-events: none;
+    }
+}

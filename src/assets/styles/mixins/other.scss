@@ -1,0 +1,32 @@
+@mixin size($width: auto, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin flexbox($direction: row, $justify: flex-start, $align: flex-start, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+
+@mixin fontSettings($font-weight, $font-size, $line-height, $color: black) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+  }
+  
+ @mixin textOverflow($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @if $lines > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+}
